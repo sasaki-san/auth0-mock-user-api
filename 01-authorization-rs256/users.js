@@ -37,4 +37,22 @@ router.get("/profile", async (req, res) => {
   }
 });
 
+/**
+ * Users by email
+ */
+router.get("/users-by-email/:email", async (req, res) => {
+  const email = req.params.email;
+  try {
+    const user = {
+      user_id: "1234",
+      nickname: "Jane",
+      email
+    }
+    res.json(user);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).send("Server error");
+  }
+});
+
 module.exports = router;
