@@ -39,5 +39,8 @@ app.use(function(err, req, res, next){
   return res.set(err.headers).status(err.status).json({ message: err.message });
 });
 
+const usersRoutes = require("./users")
+app.use("/api/users", usersRoutes)
+
 app.listen(3010);
 console.log('Listening on http://localhost:3010');
