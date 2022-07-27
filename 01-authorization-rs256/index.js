@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const { auth, requiredScopes } = require('express-oauth2-jwt-bearer');
 const cors = require('cors');
+const boom = require("express-boom")
 require('dotenv').config();
 
 if (!process.env.ISSUER_BASE_URL || !process.env.AUDIENCE) {
@@ -40,7 +41,8 @@ app.use(function(err, req, res, next){
 });
 
 const usersRoutes = require("./users")
+app.use(boom());
 app.use("/api/users", usersRoutes)
 
-app.listen(3010);
-console.log('Listening on http://localhost:3010');
+app.listen(3011);
+console.log('Listening on http://localhost:3011');
